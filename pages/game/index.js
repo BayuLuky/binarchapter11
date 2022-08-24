@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-css-tags */
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
@@ -7,61 +9,14 @@ const Game = (props) => {
   return (
     <React.Fragment>
       <Head>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/style.css" />
+        {/* <link rel="stylesheet" href="css/style.css" /> */}
         <title>Rock Paper Scissor</title>
       </Head>
-      <div className="container">
-        <div className="row">
-          <header>
-            <div className="row">
-              <div className="col-12">
-                <div className="header">
-                  <div className="button-header">
-                    <Link href={"/"}>
-                      <a href="#">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={45}
-                          height={45}
-                          fill="#724C21"
-                          className="bi bi-chevron-left"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                            stroke="#724C21"
-                            strokeWidth="1.5"
-                          />
-                        </svg>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="logo-header">
-                    <a href="#">
-                      <div className="d-inline-block">
-                        <img
-                          src="./assets/logo.png"
-                          width="50px"
-                          height="50px"
-                          className=""
-                          alt="logo"
-                        />
-                      </div>
-                    </a>
-                  </div>
-                  <div className="title-header">
-                    <h2>ROCK PAPER SCISSORS</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </header>
-        </div>
-        <div className="row">
+      <div
+        className="jumbotron jumbotron-fluid bg-image headergame p-8"
+        id="headergame"
+      >
+        <div className="row mt-5">
           <div className="game-section">
             <div className="row">
               <div className="left-section">

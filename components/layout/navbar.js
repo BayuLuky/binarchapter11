@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 const NavBar = (props) => {
+  const baseURL = `${process.env.NEXT_PUBLIC_BASEURL}`;
   return (
     <React.Fragment>
       <nav className="navbar navbar-expand-lg navbar-light w-100 navbargame">
         <div className="container mr-auto">
-          <a className="navbar-brand mr-5 logo" href="#">
-            Logo
-          </a>
+          <Link href={"/"}>
+            <a className="navbar-brand mr-5 logo" style={{ cursor: "pointer" }}>
+              Logo
+            </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -22,48 +25,48 @@ const NavBar = (props) => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto navbar-center">
-              <li className="nav-item">
-                <a className="nav-link" href="#header">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#thegame">
-                  Games
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#features">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#sysreq">
-                  System
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#topscores">
-                  Top Score
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#newsletter">
-                  Newsletter
-                </a>
-              </li>
+              <Link href={"/"}>
+                <li className="nav-item" style={{ cursor: "pointer" }}>
+                  <a className="nav-link">Home</a>
+                </li>
+              </Link>
+              <Link href={`${baseURL}#thegame`}>
+                <li className="nav-item">
+                  <a className="nav-link">Games</a>
+                </li>
+              </Link>
+              <Link href={`${baseURL}#features`}>
+                <li className="nav-item">
+                  <a className="nav-link">Features</a>
+                </li>
+              </Link>
+              <Link href={`${baseURL}#sysreq`}>
+                <li className="nav-item">
+                  <a className="nav-link">System</a>
+                </li>
+              </Link>
+              <Link href={`${baseURL}#topscores`}>
+                <li className="nav-item">
+                  <a className="nav-link">Top Score</a>
+                </li>
+              </Link>
+              <Link href={`${baseURL}#newsletter`}>
+                <li className="nav-item">
+                  <a className="nav-link">Newsletter</a>
+                </li>
+              </Link>
             </ul>
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Sign Up
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Login
-                </a>
-              </li>
+              <Link href={"/register"}>
+                <li className="nav-item" style={{ cursor: "pointer" }}>
+                  <a className="nav-link">Sign Up</a>
+                </li>
+              </Link>
+              <Link href={"/login"}>
+                <li className="nav-item" style={{ cursor: "pointer" }}>
+                  <a className="nav-link">Login</a>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>

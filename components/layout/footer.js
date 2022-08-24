@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
 
@@ -18,14 +19,8 @@ const Footer = (props) => {
                 <a href="#features">
                   <span>Features</span>
                 </a>
-                <a href="#sysreq">
-                  <span>System</span>
-                </a>
                 <a href="#topscores">
                   <span>Top Score</span>
-                </a>
-                <a href="#newsletter">
-                  <span>Newsletter</span>
                 </a>
               </div>
               <div className="col-lg-4 my-2 socialmedia">

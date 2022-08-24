@@ -1,0 +1,78 @@
+/* eslint-disable @next/next/no-img-element */
+import React, { useEffect, useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import Script from "next/script";
+
+const ListGame = (props) => {
+  return (
+    <React.Fragment>
+      <div>
+        {/* Start List Game*/}
+        <div
+          className="jumbotron jumbotron-fluid bg-image headergame"
+          id="header"
+        >
+          <div className="container">
+            <h1>List Game</h1>
+            <div className="row">
+              <div className="col-sm-4 mt-4">
+                <Link href={"/detail-game/1"} style={{ cursor: "pointer" }}>
+                  <div className="card bg-light" style={{ width: "18rem" }}>
+                    <div className="card-header bg-success">Played</div>
+                    <img
+                      src="assets/rockpaperstrategy-1600.jpg"
+                      alt="image slide"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title text-muted">Card title</h5>
+                      <p className="card-text text-muted">
+                        Some quick example text to build on the card title and
+                        make up the bulk of the cards content.
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <div className="col-sm-4 mt-4">
+                <div className="card bg-light" style={{ width: "18rem" }}>
+                  <div className="card-header bg-danger">Lets Play</div>
+                  <img
+                    src="assets/rockpaperstrategy-1600.jpg"
+                    alt="image slide"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title text-muted">Card title</h5>
+                    <p className="card-text text-muted">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the cards content.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4 mt-4">
+                <div className="card bg-light" style={{ width: "18rem" }}>
+                  <div className="card-header bg-danger">Lets Play</div>
+                  <img
+                    src="assets/rockpaperstrategy-1600.jpg"
+                    alt="image slide"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title text-muted">Card title</h5>
+                    <p className="card-text text-muted">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the cards content.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* End List Game */}
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default ListGame;

@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/no-page-custom-font */
+/* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,96 +11,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Bootstrap CSS */}
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-          crossOrigin="anonymous"
-        />
-
-        {/* CSS */}
-        <link rel="stylesheet" href="css/main.css" />
-
-        {/* Font */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap"
-        />
-
         <title>Binar Challenge</title>
       </Head>
-
-      {/* Start Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light w-100 navbargame">
-        <div className="container mr-auto">
-          <a className="navbar-brand mr-5 logo" href="#">
-            Logo
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto navbar-center">
-              <li className="nav-item">
-                <a className="nav-link" href="#header">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#thegame">
-                  Games
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#features">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#sysreq">
-                  System
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#topscores">
-                  Top Score
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#newsletter">
-                  Newsletter
-                </a>
-              </li>
-            </ul>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Sign Up
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Login
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      {/* End Navbar */}
 
       {/* Start Header*/}
       <div
@@ -107,9 +22,9 @@ export default function Home() {
         <div className="container">
           <h1>Play traditional game</h1>
           <h3>Experience new traditional game play</h3>
-          <a href="#" className="btn btn-warning">
-            Play now
-          </a>
+          <Link href={"/list-game"}>
+            <a className="btn btn-warning">Play now</a>
+          </Link>
         </div>
         <div className="container-fluid nextgamecontent">
           <h3>The story</h3>
@@ -141,6 +56,11 @@ export default function Home() {
             <div className="col-lg-4">
               <h3>Whats so special?</h3>
               <h1>The games</h1>
+              <Link href={"/list-game"}>
+                <a className="btn btn-warning font-weight-bold text-uppercase">
+                  More Games
+                </a>
+              </Link>
             </div>
             <div className="col-lg-8">
               <div
@@ -465,94 +385,6 @@ export default function Home() {
         </div>
       </div>
       {/* End Newsletter Content */}
-
-      {/* Start Footer */}
-      <div id="footer">
-        <div className="navigation text-center" id="navigation">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-8 my-2">
-                <a href="#header">
-                  <span>Main</span>
-                </a>
-                <a href="#thegame">
-                  <span>Games</span>
-                </a>
-                <a href="#features">
-                  <span>Features</span>
-                </a>
-                <a href="#sysreq">
-                  <span>System</span>
-                </a>
-                <a href="#topscores">
-                  <span>Top Score</span>
-                </a>
-                <a href="#newsletter">
-                  <span>Newsletter</span>
-                </a>
-              </div>
-              <div className="col-lg-4 my-2 socialmedia">
-                <a href="https://facebook.com/">
-                  <span>
-                    <img src="assets/facebook.svg" alt="facebook" />
-                  </span>
-                </a>
-                <a href="https://twitter.com/">
-                  <span style={{ color: "white" }}>
-                    <img src="assets/twitter.svg" alt="twitter" />
-                  </span>
-                </a>
-                <a href="https://youtube.com/">
-                  <span>
-                    <img src="assets/Vector.svg" alt="youtube" />
-                  </span>
-                </a>
-                <a href="https://twitch.tv/">
-                  <span>
-                    <img src="assets/twitch.svg" alt="twitch" />
-                  </span>
-                </a>
-              </div>
-            </div>
-            <hr />
-            <div className="row content-justify-end footer">
-              <div className="col-lg-4">
-                <div className="d-inline">
-                  <p>© 2018 Your Games, inc. All Rights Reserved</p>
-                </div>
-              </div>
-              <div className="col-lg-6 offset-lg-2 mb-2">
-                <div className="d-inline">
-                  <a href="#">
-                    <span>Privacy Policy </span>
-                  </a>
-                  |
-                  <a href="#">
-                    <span>Terms of Services </span>
-                  </a>
-                  |
-                  <a href="#">
-                    <span>Code of Conduct</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <Script
-        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossOrigin="anonymous"
-      ></Script>
-      <Script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-        crossOrigin="anonymous"
-      ></Script>
-
-      {/* End Footer */}
     </>
   );
 }
