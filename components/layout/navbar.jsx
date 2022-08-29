@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/role-supports-aria-props */
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { connect } from "react-redux";
@@ -12,7 +11,7 @@ const NavBar = (props) => {
   const router = useRouter()
   const baseURL = `${process.env.NEXT_PUBLIC_BASEURL}`
   const dataUser = props.stateObject.user !== 'undefined' ? props.stateObject.user : {}
-  
+
   // const logoutHandler = () => {
   //   window.localStorage.removeItem('game_identifier')
   //   props.reset()
@@ -72,47 +71,47 @@ const NavBar = (props) => {
                 </li>
               </Link>
             </ul>
-            {dataUser ? 
+            {dataUser ?
               (
-              <ul className="navbar-nav">
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    {dataUser.username}
-                  </a>
-                  <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item" href="#">
-                      Profile
+                <ul className="navbar-nav">
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {dataUser.username}
                     </a>
-                  </div>
-                </li>
-                {/* <Link href={"#"}> */}
+                    <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdownMenuLink">
+                      <a className="dropdown-item" href="#">
+                        Profile
+                      </a>
+                    </div>
+                  </li>
+                  {/* <Link href={"#"}> */}
                   <li className="nav-item" style={{ cursor: "pointer" }}>
                     <a className="nav-link" onClick={() => { props.triggerLogout() }}>Logout</a>
                   </li>
-                {/* </Link> */}
-              </ul>
+                  {/* </Link> */}
+                </ul>
               )
-              : 
+              :
               (
-              <ul className="navbar-nav">
-                <Link href={"/register"}>
-                  <li className="nav-item" style={{ cursor: "pointer" }}>
-                    <a className="nav-link">Sign Up</a>
-                  </li>
-                </Link>
-                <Link href={"/login"}>
-                  <li className="nav-item" style={{ cursor: "pointer" }}>
-                    <a className="nav-link">Login</a>
-                  </li>
-                </Link>
-              </ul>
+                <ul className="navbar-nav">
+                  <Link href={"/register"}>
+                    <li className="nav-item" style={{ cursor: "pointer" }}>
+                      <a className="nav-link">Sign Up</a>
+                    </li>
+                  </Link>
+                  <Link href={"/login"}>
+                    <li className="nav-item" style={{ cursor: "pointer" }}>
+                      <a className="nav-link">Login</a>
+                    </li>
+                  </Link>
+                </ul>
               )
             }
           </div>

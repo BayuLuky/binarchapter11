@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-css-tags */
-/* eslint-disable @next/next/no-page-custom-font */
 import React from "react"
 import Head from "next/head"
 import NavBar from "./navbar"
@@ -12,42 +10,42 @@ import { setUser, setToken, setLogging, reset } from "../redux/reduxActions";
 
 const mapStateToProps = (state, ownProps) => ({
   stateObject: state
-}) 
+})
 
 const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => {
-      dispatch(setUser(user))
+    dispatch(setUser(user))
   },
   setToken: (accessToken) => {
-      dispatch(setToken(accessToken))
+    dispatch(setToken(accessToken))
   },
   setLogging: (loggedIn) => {
-      dispatch(setLogging(loggedIn))
+    dispatch(setLogging(loggedIn))
   },
   reset: () => {
-      dispatch(reset())
+    dispatch(reset())
   }
 })
 
 class BaseLayout extends React.Component {
   triggerLogout = () => {
-		Swal.fire({
-			text: "Anda akan keluar dari aplikasi?",
-            icon: "warning",
-            buttonsStyling: false,
-            showCancelButton: true,
-            confirmButtonText: "Keluar!",
-            cancelButtonText: 'Tidak, batalkan',
-            customClass: {
-                confirmButton: "btn btn-danger mr-3",
-                cancelButton: 'btn btn-secondary'
-            }
-		}).then((result) => {
-			if(result.isConfirmed) {
+    Swal.fire({
+      text: "Anda akan keluar dari aplikasi?",
+      icon: "warning",
+      buttonsStyling: false,
+      showCancelButton: true,
+      confirmButtonText: "Keluar!",
+      cancelButtonText: 'Tidak, batalkan',
+      customClass: {
+        confirmButton: "btn btn-danger mr-3",
+        cancelButton: 'btn btn-secondary'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
         window.localStorage.removeItem('game_identifier')
         this.props.reset()
-			}
-		})
+      }
+    })
   }
 
   render() {
@@ -84,7 +82,7 @@ class BaseLayout extends React.Component {
           <title>Binar Challenge</title>
         </Head>
 
-        <NavBar triggerLogout={this.triggerLogout}/>
+        <NavBar triggerLogout={this.triggerLogout} />
 
         {/* <Example /> */}
         <main className="my-10 pb-8 ">{children}</main>

@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-css-tags */
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react"
 import Head from "next/head"
 import Link from "next/link"

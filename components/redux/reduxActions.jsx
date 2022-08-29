@@ -17,4 +17,4 @@ const reset = () => ({
     type: "clearstate"
 })
 
-export {setUser, setToken, setLogging, reset}
+export { setUser, setToken, setLogging, reset }

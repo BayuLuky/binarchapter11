@@ -15,22 +15,22 @@ const Menu = (props) => {
 
 	switch (onPage) {
 		case 'login':
-		return <MainLogin onPage={onPage}/>
+			return <MainLogin onPage={onPage} />
 
 		case 'register':
-			return <MainRegister onPage={onPage}/>
+			return <MainRegister onPage={onPage} />
 
 		case 'game':
-			return <MainGame onPage={onPage}/>
+			return <MainGame onPage={onPage} />
 
 		case 'list-game':
-			return <MainListGame onPage={onPage}/>
+			return <MainListGame onPage={onPage} />
 
 		case 'detail-game':
-			return <MainDetailGame onPage={onPage}/>
+			return <MainDetailGame onPage={onPage} />
 
 		default:
-			return <section>Loading....</section>	
+			return <section>Loading....</section>
 	}
 }
 

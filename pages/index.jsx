@@ -1,6 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/no-page-custom-font */
-/* eslint-disable @next/next/no-css-tags */
 import React, { useState, useEffect } from 'react';
 import Head from "next/head"
 import Link from "next/link"
@@ -9,23 +6,22 @@ import APIRequest from '../components/library/request/apiRequest'
 
 export default function Home() {
 
-	const API = `${process.env.NEXT_PUBLIC_APIURL}users/score`
-	const [topscore, setTopscore] = useState([])
+  const API = `${process.env.NEXT_PUBLIC_APIURL}users/score`
+  const [topscore, setTopscore] = useState([])
 
   const getTopscore = () => {
-		APIRequest('GET', API)
-		.then(response => {
-			const topscore = response.scores
-      setTopscore(topscore)
-		})
-		.catch(err => {
-			console.log('err', err)
-		})
-	}
+    APIRequest('GET', API)
+      .then(response => {
+        const topscore = response.scores
+        setTopscore(topscore)
+      })
+      .catch(err => {
+        console.log('err', err)
+      })
+  }
 
-  useEffect(()=> {
+  useEffect(() => {
     return getTopscore()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -281,7 +277,7 @@ export default function Home() {
             </a>
           </div>
           <div className="row">
-            {topscore.slice(0,3).map((topscore, idx) => (
+            {topscore.slice(0, 3).map((topscore, idx) => (
               <div key={idx} className="col-lg-4 col-md-6 col-sm-8 offset-lg-8 offset-md-3 offset-sm-2 twittercards">
                 <div className="card text-white bg-dark mb-4">
                   <div className="card-header">

@@ -49,7 +49,7 @@ const LoginForm = (props) => {
           }
 
           const accessToken = response.data.data.accessToken
-          
+
           window.localStorage.setItem(
             "game_identifier",
             response.data.data.accessToken
@@ -155,15 +155,14 @@ const LoginForm = (props) => {
                       <input
                         type="text"
                         {...register("username")}
-                        className={`form-control ${
-                          errors.username ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.username ? "is-invalid" : ""
+                          }`}
                         id="username"
                         aria-describedby="emailUsername"
                         placeholder="Enter username"
                       />
                       <div className="invalid-feedback">
-                      {errors.username?.message}
+                        {errors.username?.message}
                       </div>
                     </div>
                     <div className="form-group">
@@ -176,9 +175,8 @@ const LoginForm = (props) => {
                       <input
                         type="password"
                         {...register("password")}
-                        className={`form-control ${
-                          errors.username ? "is-invalid" : ""
-                        }`}
+                        className={`form-control ${errors.username ? "is-invalid" : ""
+                          }`}
                         id="password"
                         aria-describedby="passwordHelp"
                         placeholder="Enter password"

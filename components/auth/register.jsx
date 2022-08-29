@@ -10,55 +10,55 @@ import Swal from "sweetalert2"
 const RegisterForm = (props) => {
   const router = useRouter()
   const formSchema = Yup.object().shape({
-      username: Yup.string()
-          .required('Username tidak boleh kosong'),
-      password: Yup.string()
-          .required('Password tidak boleh kosong')
-          .min(6, 'Password minimal 6 karakter'),
-      fullname: Yup.string()
-          .required('Fullname tidak boleh kosong'),
-      email: Yup.string()
-          .required('Email tidak boleh kosong'),
+    username: Yup.string()
+      .required('Username tidak boleh kosong'),
+    password: Yup.string()
+      .required('Password tidak boleh kosong')
+      .min(6, 'Password minimal 6 karakter'),
+    fullname: Yup.string()
+      .required('Fullname tidak boleh kosong'),
+    email: Yup.string()
+      .required('Email tidak boleh kosong'),
   })
   const validationOpt = { resolver: yupResolver(formSchema) }
-  const { register, handleSubmit, reset, formState: { errors }} = useForm(validationOpt)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm(validationOpt)
 
   const [btnSubmit, setBtnSubmit] = useState(false)
 
   const onFormSubmit = data => {
-      setBtnSubmit(true)
-      axios({
-          url: `${process.env.NEXT_PUBLIC_APIURL}register`,
-          method: 'POST',
-          data, 
-          headers: { 
-              'Accept' : 'application/json',
-              'Access-Control-Allow-Credentials' : true,
-              'Access-Control-Allow-Origin' : '*'
-          }
-      }).then(response => {
-          Swal.fire({
-              title: "Berhasil ditambahkan",
-              icon: "success",
-              customClass: {
-                  confirmButton: "btn btn-success"
-              }
-          }).then((result)=>{
-              if (result.isConfirmed) {
-                  setBtnSubmit(false)
-                  router.push('/login')
-                }
-          })
-      }).catch(error => {
-          Swal.fire({
-              title: "Terjadi kesalahan!",
-              icon: "error",
-              customClass: {
-                  confirmButton: "btn btn-success"
-              }
-          })
+    setBtnSubmit(true)
+    axios({
+      url: `${process.env.NEXT_PUBLIC_APIURL}register`,
+      method: 'POST',
+      data,
+      headers: {
+        'Accept': 'application/json',
+        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Origin': '*'
+      }
+    }).then(response => {
+      Swal.fire({
+        title: "Berhasil ditambahkan",
+        icon: "success",
+        customClass: {
+          confirmButton: "btn btn-success"
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
           setBtnSubmit(false)
+          router.push('/login')
+        }
       })
+    }).catch(error => {
+      Swal.fire({
+        title: "Terjadi kesalahan!",
+        icon: "error",
+        customClass: {
+          confirmButton: "btn btn-success"
+        }
+      })
+      setBtnSubmit(false)
+    })
   }
 
   return (

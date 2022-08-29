@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react"
 import Head from "next/head"
 import Link from "next/link"
@@ -8,22 +7,21 @@ import APIRequest from '../../components/library/request/apiRequest'
 const ListGame = (props) => {
 
   const API = `${process.env.NEXT_PUBLIC_APIURL}game`
-	const [listgame, setListgame] = useState([])
+  const [listgame, setListgame] = useState([])
 
   const getListgame = () => {
-		APIRequest('GET', API)
-		.then(response => {
-			const listgame = response.scores
-      setListgame(listgame)
-		})
-		.catch(err => {
-			console.log('err', err)
-		})
-	}
+    APIRequest('GET', API)
+      .then(response => {
+        const listgame = response.scores
+        setListgame(listgame)
+      })
+      .catch(err => {
+        console.log('err', err)
+      })
+  }
 
-  useEffect(()=> {
+  useEffect(() => {
     return getListgame()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

@@ -4,13 +4,13 @@ const ReduxReducers = (state = {}, action) => {
 
     switch (action.type) {
         case 'set/user':
-            return {...state, user: action.user}
+            return { ...state, user: action.user }
         case 'set/token':
-            return {...state, accessToken: action.accessToken}
+            return { ...state, accessToken: action.accessToken }
         case 'set/islogging':
-            return {...state, loggedIn: action.loggedIn}
+            return { ...state, loggedIn: action.loggedIn }
         case 'clearstate':
-            return {undefined}
+            return { undefined }
         default:
             return state
     }
