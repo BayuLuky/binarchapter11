@@ -1,13 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/no-css-tags */
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import Script from "next/script";
-import styles from "../styles/Home.module.css";
+import React, { useState, useEffect } from 'react';
+import Head from "next/head"
+import Link from "next/link"
+import styles from "../styles/Home.module.css"
+import APIRequest from '../components/library/request/apiRequest'
 
 export default function Home() {
+
+	const API = `${process.env.NEXT_PUBLIC_APIURL}users/score`
+	const [topscore, setTopscore] = useState([])
+
+  const getTopscore = () => {
+		APIRequest('GET', API)
+		.then(response => {
+			const topscore = response.scores
+      setTopscore(topscore)
+		})
+		.catch(err => {
+			console.log('err', err)
+		})
+	}
+
+  useEffect(()=> {
+    return getTopscore()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <Head>
@@ -261,83 +281,25 @@ export default function Home() {
             </a>
           </div>
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-8 offset-md-3 offset-sm-2 twittercards">
-              <div className="card text-white bg-dark mb-4">
-                <div className="card-header">
-                  <img
-                    src="assets/evan-lahti.jpg"
-                    className="img-fluid float-left profilepic"
-                    alt="Evan Lahti"
-                  />
-                  <h3>Evan Lahti</h3>
-                  <h4>PC Gamer</h4>
-                  <img
-                    src="assets/twitter.svg"
-                    className="img-fluid float-right twitterlogo"
-                    alt="twitterlogo"
-                  />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">
-                    One of my gaming highlights of the year.
-                  </h5>
-                  <p className="card-text">October 18, 2021</p>
+            {topscore.slice(0,3).map((topscore, idx) => (
+              <div key={idx} className="col-lg-4 col-md-6 col-sm-8 offset-lg-8 offset-md-3 offset-sm-2 twittercards">
+                <div className="card text-white bg-dark mb-4">
+                  <div className="card-header">
+                    <img
+                      src="assets/evan-lahti.jpg"
+                      className="img-fluid float-left profilepic"
+                      alt="Evan Lahti"
+                    />
+                    <h3>{topscore.fullname}</h3>
+                  </div>
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      score : {topscore.total_score}
+                    </h5>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-6 offset-md-3 offset-sm-2 twittercards">
-              <div className="card text-white bg-dark mb-4">
-                <div className="card-header">
-                  <img
-                    src="assets/jada-griffin.jpg"
-                    className="img-fluid float-left profilepic"
-                    alt="Jada Griffin"
-                  />
-                  <h3>Jada Griffin</h3>
-                  <h4>Nerdreactor</h4>
-                  <img
-                    src="assets/twitter.svg"
-                    className="img-fluid float-right twitterlogo"
-                    alt="twitterlogo"
-                  />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">
-                    The next big thing in the world of streaming and survival
-                    games.
-                  </h5>
-                  <p className="card-text">July 10, 2021</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-7 offset-md-3 offset-sm-2 twittercards">
-              <div className="card text-white bg-dark mb-1">
-                <div className="card-header">
-                  <img
-                    src="assets/aaron-williams.jpg"
-                    className="img-fluid float-left profilepic"
-                    alt="Aaron Williams"
-                  />
-                  <h3>Aaron Williams</h3>
-                  <h4>Uproxx</h4>
-                  <img
-                    src="assets/twitter.svg"
-                    className="img-fluid float-right twitterlogo"
-                    alt="twitterlogo"
-                  />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">
-                    Snoop Dogg Playing The Wildly Entertaining SOS Is Ridiculous
-                  </h5>
-                  <p className="card-text">December 24, 2018</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -386,5 +348,5 @@ export default function Home() {
       </div>
       {/* End Newsletter Content */}
     </>
-  );
+  )
 }

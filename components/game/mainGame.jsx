@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import Script from "next/script";
+import React, { useEffect, useState } from "react"
+import Head from "next/head"
+import Link from "next/link"
+import Script from "next/script"
 
 const Game = (props) => {
   return (
@@ -13,7 +13,7 @@ const Game = (props) => {
         <title>Rock Paper Scissor</title>
       </Head>
       <div
-        className="jumbotron jumbotron-fluid bg-image headergame p-8"
+        className="jumbotron jumbotron-fluid bg-image headergame"
         id="headergame"
       >
         <div className="row mt-5">
@@ -107,7 +107,7 @@ const Game = (props) => {
       </div>
       <Script src="js/rps.js"></Script>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default Game;
+export default Game

@@ -1,15 +1,57 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable @next/next/no-page-custom-font */
-import React from "react";
-import Head from "next/head";
+import React from "react"
+import Head from "next/head"
+import NavBar from "./navbar"
+import Footer from "./footer"
+import Script from "next/script"
+import Swal from "sweetalert2"
+import { connect } from "react-redux";
 
-import NavBar from "./navbar";
-import Footer from "./footer";
-import Script from "next/script";
+import { setUser, setToken, setLogging, reset } from "../redux/reduxActions";
+
+const mapStateToProps = (state, ownProps) => ({
+  stateObject: state
+}) 
+
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => {
+      dispatch(setUser(user))
+  },
+  setToken: (accessToken) => {
+      dispatch(setToken(accessToken))
+  },
+  setLogging: (loggedIn) => {
+      dispatch(setLogging(loggedIn))
+  },
+  reset: () => {
+      dispatch(reset())
+  }
+})
 
 class BaseLayout extends React.Component {
+  triggerLogout = () => {
+		Swal.fire({
+			text: "Anda akan keluar dari aplikasi?",
+            icon: "warning",
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: "Keluar!",
+            cancelButtonText: 'Tidak, batalkan',
+            customClass: {
+                confirmButton: "btn btn-danger mr-3",
+                cancelButton: 'btn btn-secondary'
+            }
+		}).then((result) => {
+			if(result.isConfirmed) {
+        window.localStorage.removeItem('game_identifier')
+        this.props.reset()
+			}
+		})
+  }
+
   render() {
-    const { children } = this.props;
+    const { children } = this.props
 
     return (
       <React.Fragment>
@@ -42,7 +84,7 @@ class BaseLayout extends React.Component {
           <title>Binar Challenge</title>
         </Head>
 
-        <NavBar />
+        <NavBar triggerLogout={this.triggerLogout}/>
 
         {/* <Example /> */}
         <main className="my-10 pb-8 ">{children}</main>
@@ -59,8 +101,9 @@ class BaseLayout extends React.Component {
           crossOrigin="anonymous"
         ></Script>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default BaseLayout;
+BaseLayout = connect(mapStateToProps, mapDispatchToProps)(BaseLayout)
+export default BaseLayout

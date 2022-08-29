@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
 
 const Footer = (props) => {
   return (
@@ -73,7 +73,7 @@ const Footer = (props) => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

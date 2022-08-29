@@ -1,10 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import Script from "next/script";
+import React, { useEffect, useState } from "react"
+import Head from "next/head"
+import Link from "next/link"
+import Script from "next/script"
+import APIRequest from '../../components/library/request/apiRequest'
 
 const ListGame = (props) => {
+
+  const API = `${process.env.NEXT_PUBLIC_APIURL}game`
+	const [listgame, setListgame] = useState([])
+
+  const getListgame = () => {
+		APIRequest('GET', API)
+		.then(response => {
+			const listgame = response.scores
+      setListgame(listgame)
+		})
+		.catch(err => {
+			console.log('err', err)
+		})
+	}
+
+  useEffect(()=> {
+    return getListgame()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <React.Fragment>
       <div>
@@ -17,7 +38,7 @@ const ListGame = (props) => {
             <h1>List Game</h1>
             <div className="row">
               <div className="col-sm-4 mt-4">
-                <Link href={"/detail-game/1"} style={{ cursor: "pointer" }}>
+                <Link href={"/detail-game"} style={{ cursor: "pointer" }}>
                   <div className="card bg-light" style={{ width: "18rem" }}>
                     <div className="card-header bg-success">Played</div>
                     <img
@@ -34,7 +55,7 @@ const ListGame = (props) => {
                   </div>
                 </Link>
               </div>
-              <div className="col-sm-4 mt-4">
+              {/* <div className="col-sm-4 mt-4">
                 <div className="card bg-light" style={{ width: "18rem" }}>
                   <div className="card-header bg-danger">Lets Play</div>
                   <img
@@ -65,14 +86,14 @@ const ListGame = (props) => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
         {/* End List Game */}
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default ListGame;
+export default ListGame

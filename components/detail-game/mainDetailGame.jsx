@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import Link from "next/link";
-import Script from "next/script";
+import React, { useEffect, useState } from "react"
+import Head from "next/head"
+import Link from "next/link"
+import Script from "next/script"
 
 const DetailGame = (props) => {
   return (
@@ -51,7 +51,7 @@ const DetailGame = (props) => {
         {/* End Detail Game */}
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default DetailGame;
+export default DetailGame

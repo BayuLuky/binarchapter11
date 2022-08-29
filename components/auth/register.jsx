@@ -1,8 +1,66 @@
-import Head from "next/head";
-import Link from "next/link";
-import Script from "next/script";
+import React, { useState } from "react"
+import { useForm } from "react-hook-form"
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useRouter } from 'next/router'
+import Head from "next/head"
+import axios from "axios"
+import * as Yup from 'yup'
+import Swal from "sweetalert2"
 
-export default function Register() {
+const RegisterForm = (props) => {
+  const router = useRouter()
+  const formSchema = Yup.object().shape({
+      username: Yup.string()
+          .required('Username tidak boleh kosong'),
+      password: Yup.string()
+          .required('Password tidak boleh kosong')
+          .min(6, 'Password minimal 6 karakter'),
+      fullname: Yup.string()
+          .required('Fullname tidak boleh kosong'),
+      email: Yup.string()
+          .required('Email tidak boleh kosong'),
+  })
+  const validationOpt = { resolver: yupResolver(formSchema) }
+  const { register, handleSubmit, reset, formState: { errors }} = useForm(validationOpt)
+
+  const [btnSubmit, setBtnSubmit] = useState(false)
+
+  const onFormSubmit = data => {
+      setBtnSubmit(true)
+      axios({
+          url: `${process.env.NEXT_PUBLIC_APIURL}register`,
+          method: 'POST',
+          data, 
+          headers: { 
+              'Accept' : 'application/json',
+              'Access-Control-Allow-Credentials' : true,
+              'Access-Control-Allow-Origin' : '*'
+          }
+      }).then(response => {
+          Swal.fire({
+              title: "Berhasil ditambahkan",
+              icon: "success",
+              customClass: {
+                  confirmButton: "btn btn-success"
+              }
+          }).then((result)=>{
+              if (result.isConfirmed) {
+                  setBtnSubmit(false)
+                  router.push('/login')
+                }
+          })
+      }).catch(error => {
+          Swal.fire({
+              title: "Terjadi kesalahan!",
+              icon: "error",
+              customClass: {
+                  confirmButton: "btn btn-success"
+              }
+          })
+          setBtnSubmit(false)
+      })
+  }
+
   return (
     <>
       <Head>
@@ -20,64 +78,83 @@ export default function Register() {
             <div className="col-sm-9 col-md-7 col-lg-4 mx-auto">
               <div className="card border-0 shadow rounded-3 my-5">
                 <div className="card-body p-4 p-sm-5">
-                  <form>
+                  <form onSubmit={handleSubmit(onFormSubmit)}>
                     <div className="form-group">
                       <label
-                        htmlFor="exampleInputEmail1"
+                        htmlFor="exampleInputFullname"
+                        style={{ color: "black" }}
+                      >
+                        Fullname
+                      </label>
+                      <input
+                        type="text"
+                        {...register('fullname')}
+                        className={`form-control ${errors.fullname ? 'is-invalid' : ''}`}
+                        id="fullname"
+                        aria-describedby="fullnameHelp"
+                        placeholder="Enter fullname"
+                      />
+                      <div className="invalid-feedback">{errors.fullname?.message}</div>
+                    </div>
+                    <div className="form-group">
+                      <label
+                        htmlFor="exampleInputEmail"
                         style={{ color: "black" }}
                       >
                         Email address
                       </label>
                       <input
-                        type="email"
-                        className="form-control"
-                        id="exampleInputEmail1"
+                        type="text"
+                        {...register('email')}
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        id="email"
                         aria-describedby="emailHelp"
                         placeholder="Enter email"
                       />
+                      <div className="invalid-feedback">{errors.email?.message}</div>
                     </div>
-                    {/* <div className="form-floating mb-3">
+                    <div className="form-group">
+                      <label
+                        htmlFor="exampleInputUsername"
+                        style={{ color: "black" }}
+                      >
+                        Username
+                      </label>
                       <input
                         type="text"
-                        className="form-control"
-                        id="floatingInput"
-                        placeholder="fullname example"
+                        {...register('username')}
+                        className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                        id="username"
+                        aria-describedby="usernameHelp"
+                        placeholder="Enter username"
                       />
-                      <label htmlFor="floatingInput">Fullname</label>
+                      <div className="invalid-feedback">{errors.username?.message}</div>
                     </div>
-                    <div className="form-floating mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="floatingInput"
-                        placeholder="username example"
-                      />
-                      <label htmlFor="floatingInput">Username</label>
-                    </div>
-                    <div className="form-floating mb-3">
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="floatingInput"
-                        placeholder="name@example.com"
-                      />
-                      <label htmlFor="floatingInput">Email address</label>
-                    </div>
-                    <div className="form-floating mb-3">
+                    <div className="form-group">
+                      <label
+                        htmlFor="exampleInputPassword"
+                        style={{ color: "black" }}
+                      >
+                        Password
+                      </label>
                       <input
                         type="password"
-                        className="form-control"
-                        id="floatingPassword"
-                        placeholder="password"
+                        {...register('password')}
+                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                        id="password"
+                        aria-describedby="passwordHelp"
+                        placeholder="Enter password"
                       />
-                      <label htmlFor="floatingPassword">Password</label>
-                    </div> */}
-                    <div className="d-grid">
+                      <div className="invalid-feedback">{errors.password?.message}</div>
+                    </div>
+                    <div className="d-grid mt-5">
                       <button
-                        className="btn btn-primary btn-login"
+                        className="btn btn-warning btn-login font-weight-bold text-uppercase w-100"
                         type="submit"
+                        disabled={btnSubmit}
+                        data-kt-indicator={btnSubmit ? 'on' : 'off'}
                       >
-                        Sign Up
+                        Register
                       </button>
                     </div>
                   </form>
@@ -176,5 +253,7 @@ export default function Register() {
       </div>
       {/* End Register */}
     </>
-  );
+  )
 }
+
+export default RegisterForm
