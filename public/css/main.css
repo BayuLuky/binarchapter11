@@ -57,13 +57,11 @@ html {
 
 /* Header Game */
 .headergame {
-    background-image: -webkit-gradient(
-            linear,
+    background-image: -webkit-gradient(linear,
             left top,
             left bottom,
             color-stop(70%, transparent),
-            to(black)
-        ),
+            to(black)),
         url(../assets/main-bg.jpg);
     background-image: linear-gradient(to bottom, transparent 80%, black 100%),
         url(../assets/main-bg.jpg);
@@ -113,22 +111,18 @@ html {
 
 /* Game Content */
 .gamecontent {
-    background-image: -webkit-gradient(
-            linear,
+    background-image: -webkit-gradient(linear,
             left top,
             left bottom,
             from(black),
             color-stop(10%, transparent),
             color-stop(90%, transparent),
-            to(black)
-        ),
+            to(black)),
         url(../assets/the-games-bg.jpg);
-    background-image: linear-gradient(
-            black 0%,
+    background-image: linear-gradient(black 0%,
             transparent 10%,
             transparent 90%,
-            black 100%
-        ),
+            black 100%),
         url(../assets/the-games-bg.jpg);
 }
 
@@ -180,14 +174,12 @@ html {
 
 /* Features Content */
 .featurescontent {
-    background-image: -webkit-gradient(
-            linear,
+    background-image: -webkit-gradient(linear,
             left top,
             left bottom,
             from(black),
             color-stop(100%, transparent),
-            to(black)
-        ),
+            to(black)),
         url(../assets/features.jpg);
     background-image: linear-gradient(black 0%, transparent 30%, black 100%),
         url(../assets/features.jpg);
@@ -296,14 +288,12 @@ html {
 
 /* System Requirements Content */
 .sysreqcontent {
-    background-image: -webkit-gradient(
-            linear,
+    background-image: -webkit-gradient(linear,
             left top,
             left bottom,
             from(black),
             color-stop(50%, transparent),
-            to(black)
-        ),
+            to(black)),
         url(../assets/requirements.png);
     background-image: linear-gradient(black 0%, transparent 50%, black 100%),
         url(../assets/requirements.png);
@@ -340,22 +330,18 @@ html {
 
 /* Top Scores Content */
 .topscorescontent {
-    background-image: -webkit-gradient(
-            linear,
+    background-image: -webkit-gradient(linear,
             left top,
             left bottom,
             from(black),
             color-stop(10%, transparent),
             color-stop(90%, transparent),
-            to(black)
-        ),
+            to(black)),
         url(../assets/top-score-bg.jpeg);
-    background-image: linear-gradient(
-            black 0%,
+    background-image: linear-gradient(black 0%,
             transparent 90%,
             transparent 80%,
-            black 100%
-        ),
+            black 100%),
         url(../assets/top-score-bg.jpeg);
 }
 
@@ -446,22 +432,18 @@ html {
 
 /* Newsletter Content */
 .newslettercontent {
-    background-image: -webkit-gradient(
-            linear,
+    background-image: -webkit-gradient(linear,
             left top,
             left bottom,
             from(black),
             color-stop(10%, transparent),
             color-stop(90%, transparent),
-            to(black)
-        ),
+            to(black)),
         url(../assets/newsletter-bg.jpg);
-    background-image: linear-gradient(
-            black 0%,
+    background-image: linear-gradient(black 0%,
             transparent 80%,
             transparent 80%,
-            black 100%
-        ),
+            black 100%),
         url(../assets/newsletter-bg.jpg);
     text-align: left;
 }
@@ -561,6 +543,7 @@ html {
 
 /* For Landscape Phone */
 @media (min-width: 576px) and (max-width: 768px) {
+
     /* Header Game */
     .headergame .container h1 {
         font-size: 6vw;
@@ -642,6 +625,7 @@ html {
 
 /* For Tablet */
 @media (min-width: 768px) and (max-width: 992px) {
+
     /* Header Game */
     .headergame .container h1 {
         font-size: 6vw;
@@ -723,6 +707,7 @@ html {
 
 /* For Desktop */
 @media (min-width: 992px) and (max-width: 1200px) {
+
     /* Navbar */
     .navbargame {
         background-color: rgba(0, 0, 0, 0.3) !important;
@@ -848,6 +833,7 @@ html {
 
 /* For Large Desktop */
 @media (min-width: 1200px) {
+
     /* Navbar */
     .navbargame {
         background-color: rgba(0, 0, 0, 0.3) !important;
