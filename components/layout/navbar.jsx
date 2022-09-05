@@ -86,9 +86,11 @@ const NavBar = (props) => {
                       {dataUser.username}
                     </a>
                     <div className="dropdown-menu bg-secondary" aria-labelledby="navbarDropdownMenuLink">
-                      <a className="dropdown-item" href="#">
-                        Profile
-                      </a>
+                      <Link href={"/profile"}>
+                        <a className="dropdown-item">
+                          Profile
+                        </a>
+                      </Link>
                     </div>
                   </li>
                   {/* <Link href={"#"}> */}
