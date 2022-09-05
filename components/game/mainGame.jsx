@@ -7,7 +7,7 @@ const Game = (props) => {
   return (
     <React.Fragment>
       <Head>
-        {/* <link rel="stylesheet" href="css/style.css" /> */}
+        <link rel="stylesheet" href="css/style.css" />
         <title>Rock Paper Scissor</title>
       </Head>
       <div
@@ -21,7 +21,7 @@ const Game = (props) => {
                 <h3 className="card-role">Player 1</h3>
                 <div className="row contentImage">
                   <div className="col">
-                    <div className="card card-player">
+                    <div className="card card-player p-4">
                       <img
                         src="./assets/batu.png"
                         id="rock"
@@ -32,7 +32,7 @@ const Game = (props) => {
                     </div>
                   </div>
                   <div className="col">
-                    <div className="card card-player">
+                    <div className="card card-player p-4">
                       <img
                         src="./assets/kertas.png"
                         id="paper"
@@ -43,7 +43,7 @@ const Game = (props) => {
                     </div>
                   </div>
                   <div className="col">
-                    <div className="card card-player">
+                    <div className="card card-player p-4">
                       <img
                         src="./assets/gunting.png"
                         id="scissors"
@@ -71,17 +71,17 @@ const Game = (props) => {
                 <h3 className="card-role">Com</h3>
                 <div className="row">
                   <div className="col">
-                    <div className="card card-comp">
+                    <div className="card card-comp p-4">
                       <img src="./assets/batu.png" alt="rock" />
                     </div>
                   </div>
                   <div className="col">
-                    <div className="card card-comp">
+                    <div className="card card-comp p-4">
                       <img src="./assets/kertas.png" alt="paper" />
                     </div>
                   </div>
                   <div className="col">
-                    <div className="card card-comp">
+                    <div className="card card-comp p-4">
                       <img src="./assets/gunting.png" alt="scissors" />
                     </div>
                   </div>
@@ -92,6 +92,7 @@ const Game = (props) => {
               <div className="col-4">
                 <div className="reset-section">
                   <img
+                    className="bg-warning p-1"
                     id="btn_reset"
                     name="btn_reset"
                     src="./assets/refresh.png"

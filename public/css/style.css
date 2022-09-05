@@ -13,6 +13,7 @@ body {
     text-align: left;
     background-color: #9c835f;
 }
+
 h1,
 h2,
 h3,
@@ -48,13 +49,13 @@ header {
     font-size: 20px;
 }
 
-.container {
+/* .container {
     display: flex;
     width: 100vw;
     flex-direction: column;
     padding-left: 10px;
     padding-right: 10px;
-}
+} */
 
 .row {
     display: flex;
@@ -85,7 +86,7 @@ header {
     padding: 10px;
 }
 
-.game-section > .row {
+.game-section>.row {
     flex-direction: column;
 }
 
@@ -95,8 +96,9 @@ header {
     position: relative;
     width: 100%;
 }
-.left-section > .row,
-.right-section > .row {
+
+.left-section>.row,
+.right-section>.row {
     flex-direction: row;
 }
 
@@ -115,7 +117,7 @@ header {
     justify-content: center;
 }
 
-.card {
+.card-game {
     width: 100%;
     border-radius: 10px;
     color: #ffffff;
@@ -134,11 +136,11 @@ header {
     letter-spacing: 0.1em;
 }
 
-.card > img {
+/* .card > img {
     padding: 20px 10px;
     max-width: 90%;
     max-height: 140px;
-}
+} */
 
 .card-player:hover {
     background-color: #b68871;
@@ -179,7 +181,7 @@ header {
     padding: 20px;
 }
 
-.reset-section > img {
+.reset-section>img {
     max-width: 50px;
 }
 
@@ -199,7 +201,7 @@ header {
         font-size: 5vh;
     }
 
-    .center-section > .row {
+    .center-section>.row {
         justify-content: center;
     }
 
@@ -212,7 +214,7 @@ header {
         max-width: 35%;
     }
 
-    .game-section > .row {
+    .game-section>.row {
         flex-direction: row;
         justify-content: center;
     }
