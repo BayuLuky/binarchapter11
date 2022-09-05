@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react"
+import { connect } from "react-redux";
 import Head from "next/head"
 import Link from "next/link"
 import Script from "next/script"
 
+const mapStateToProps = (state, ownProps) => ({
+  stateObject: state
+})
+
 const DetailGame = (props) => {
+
+  const dataUser = props.stateObject.user !== 'undefined' ? props.stateObject.user : {}
+
   return (
     <React.Fragment>
       <div>
@@ -37,11 +45,23 @@ const DetailGame = (props) => {
                       make up the bulk of the cards content.
                     </p>
                   </div>
-                  <Link href={"/game"}>
-                    <a className="btn btn-warning font-weight-bold text-uppercase w-100">
-                      Play Game
-                    </a>
-                  </Link>
+                  {dataUser ?
+                    (
+                      <Link href={`${process.env.NEXT_PUBLIC_BASEURL}game`}>
+                        <a className="btn btn-warning font-weight-bold text-uppercase w-100">
+                          Play Game
+                        </a>
+                      </Link>
+                    )
+                    :
+                    (
+                      <Link href={`${process.env.NEXT_PUBLIC_BASEURL}login`}>
+                        <a className="btn btn-warning font-weight-bold text-uppercase w-100">
+                          Play Game
+                        </a>
+                      </Link>
+                    )
+                  }
                 </div>
               </div>
             </div>
@@ -53,4 +73,4 @@ const DetailGame = (props) => {
   )
 }
 
-export default DetailGame
+export default connect(mapStateToProps)(DetailGame);
