@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Head from "next/head"
 import Link from "next/link"
 import Script from "next/script"
+import APIRequest from '../../components/library/request/apiRequest'
 
 const mapStateToProps = (state, ownProps) => ({
   stateObject: state
@@ -11,6 +12,23 @@ const mapStateToProps = (state, ownProps) => ({
 const DetailGame = (props) => {
 
   const dataUser = props.stateObject.user !== 'undefined' ? props.stateObject.user : {}
+  const API = `${process.env.NEXT_PUBLIC_APIURL}game/1`
+  const [game, setGame] = useState([])
+
+  const getGame = () => {
+    APIRequest('GET', API)
+      .then(response => {
+        const game = response.data
+        setGame(game)
+      })
+      .catch(err => {
+        console.log('err', err)
+      })
+  }
+
+  useEffect(() => {
+    return getGame()
+  }, [])
 
   return (
     <React.Fragment>
@@ -36,13 +54,12 @@ const DetailGame = (props) => {
               <div className="col-sm-6 mt-4">
                 <div className="card bg-light p-4" style={{ width: "100%" }}>
                   <div className="card-header bg-secondary">
-                    <h5 className="card-title pt-2">Card title</h5>
+                    <h5 className="card-title pt-2">{game.name}</h5>
                   </div>
                   <div className="card-body">
                     <p className="card-text text-muted">Description</p>
                     <p className="card-text text-muted">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the cards content.
+                      {game.description}
                     </p>
                   </div>
                   {dataUser ?
