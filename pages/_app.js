@@ -1,3 +1,4 @@
+import React from "react"
 import "../styles/globals.css"
 import BaseLayout from "../components/layout/base"
 import { Provider } from "react-redux"

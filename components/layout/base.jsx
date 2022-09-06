@@ -4,6 +4,7 @@ import NavBar from "./navbar"
 import Footer from "./footer"
 import Script from "next/script"
 import Swal from "sweetalert2"
+import Router from "next/router"
 import { connect } from "react-redux";
 
 import { setUser, setToken, setLogging, reset } from "../redux/reduxActions";
@@ -44,6 +45,7 @@ class BaseLayout extends React.Component {
       if (result.isConfirmed) {
         window.localStorage.removeItem('game_identifier')
         this.props.reset()
+        Router.push('/')
       }
     })
   }
